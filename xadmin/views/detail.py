@@ -55,6 +55,9 @@ class ShowField(Field):
             else:
                 context['field'] = field
                 html += loader.render_to_string(self.template, context)
+        if hasattr(form, 'rendered_fields'):
+                if not field in form.rendered_fields:
+                    form.rendered_fields.add(field)
         return html
 
 
